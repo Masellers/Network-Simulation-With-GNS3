@@ -21,3 +21,5 @@ To learn our IP adress, we can use the command `ifconfig`, since we are using li
 
 We can also type this address into our web browser to see a screen that looks like this: 
 <img src="" height="80%" width="80%" alt="Me"/>
+
+https://youtu.be/4bvS-wdNF-I
