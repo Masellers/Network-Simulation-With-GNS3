@@ -6,7 +6,6 @@ In this Project, we are using a program called GNS3 to simulate and practice net
 # Utilities Used
 
 ### - GNS3
-GNS3 can be downloaded [here](https://www.gns3.com/software/download)
 
 ### - Wireshark
 
@@ -14,9 +13,9 @@ GNS3 can be downloaded [here](https://www.gns3.com/software/download)
 # **Install GNS3**
 
 ### Install
-You will need to make an account first in order to download but after downloading GNS3 you can follow the install guide provided by GNS3 [here](https://docs.gns3.com/docs/getting-started/installation/windows/).
+You will need to make an account first in order to [download](https://www.gns3.com/software/download) but after downloading GNS3 you can follow the install guide provided by GNS3 [here](https://docs.gns3.com/docs/getting-started/installation/windows/).
 
-The installer will ask if you want to sign-up for and install SolarWinds but this is optional. User may need to download additional routers or devices and add them to GNS3 but these can be downloaded and installed for free.
+The installer will ask if you want to sign-up for and install SolarWinds but this is optional. User may need to download additional [routers](https://www.gns3.com/marketplace/appliances/cisco-7200) and add them to GNS3 but these can be downloaded and installed for free. On their website, GNS3 also has [instructions](https://docs.gns3.com/docs/using-gns3/beginners/import-gns3-appliance/) for installing router ISOs.
 
  
 # **Step One: Start New Project**
@@ -86,7 +85,13 @@ In order to start our packet capture, right click on one of the ethernet connect
 <img src="https://i.imgur.com/CFikBCS.png" height="80%" width="80%" alt="Ping2"/>
 
 # **Step 4: WireShark**
-In our Wireshark packet capture we can see our ARP packets followed by ICMP request and reply packets
+In our Wireshark packet capture we can see our ARP packets followed by ICMP request and reply packets. ARP is used to map IP addresses to a physical MAC address. 
+
+You can see in the packet capture that the PC1 at 192.168.0.2 is asking who is at 192.168.0.1. Once the devices in a network know eachothers MAC address they can continue pinging as we have asked. When analyzing network traffic we should look for excessive ARP requests, which could indicate network issues or potential ARP spoofing/poisoning attacks.
+
+There are 5 request and 5 reply ICMP packets as well because we pinged. These packets are exactly what we would expect but when analyzing a network we could look for a high volume of Echo Requests or ICMP error messages, which might indicate network issues or potential scanning activities.
+
+Finally the LOOP packets at the beginning and the end, these are there to show that the interface is functioning properly and that there are no faults in the transmission process.
 
 <img src="https://i.imgur.com/xGbDc1r.png" height="80%" width="80%" alt="WireShark"/>
 
