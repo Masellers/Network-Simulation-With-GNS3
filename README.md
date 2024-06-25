@@ -64,6 +64,29 @@ The Process of assigning IP addresses to PC1 and PC2 is easier. We can simply ty
 * For PC1, `ip 192.168.0.2/24 192.168.0.1`
 * For PC2, `ip 172.168.0.2/24 172.168.0.1`
 
-At this point we can use a ping command to and from each device and its corresponding gateway but we won't be able to ping from PC1 to PC2 until we finish routing in the next step.
+At this point we can use a ping command to and from each device and its corresponding gateway but we won't be able to ping from PC1 to PC2 until we finish routing in the next step. When we ping, It will show 4/5 or 80% success rate. This is caused by ARP and we will look at this again later in Wireshark so we will type `clear arp-cache` after we ping.
 
 <img src="https://i.imgur.com/VlcERGm.png" height="80%" width="80%" alt="PC2 IP address"/>
+
+<img src="https://i.imgur.com/BPPlnYX.png" height="80%" width="80%" alt="Ping1"/>
+
+# **Step 3: Routing**
+
+### Routing
+In order to route these networks together use the following commands:
+* In the R1 console, `configure terminal`, and then `ip route 172.168.0.0 255.255.255.0 10.0.1.2`
+* In the R2 console, `configure terminal`, and then `ip route 192.168.0.0 255.255.255.0 10.0.1.1`
+
+Now we can ping from PC1 to PC2 or from PC2 to PC1, but before we ping we will open wireshark to capture the packets that we are sending.
+
+### Start Packet Capture and Ping
+In order to start our packet capture, right click on one of the ethernet connections between the source and destination and select **Start capture** from the menu. Then finally, ping from one device to the other.
+
+<img src="https://i.imgur.com/ejOyNYG.png" height="80%" width="80%" alt="Start Capture"/>
+<img src="https://i.imgur.com/CFikBCS.png" height="80%" width="80%" alt="Ping2"/>
+
+# **Step 4: WireShark**
+In our Wireshark packet capture we can see our ARP packets followed by ICMP request and reply packets
+
+<img src="https://i.imgur.com/xGbDc1r.png" height="80%" width="80%" alt="WireShark"/>
+
